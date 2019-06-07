@@ -1,5 +1,5 @@
 //
-//  UIAlertController.swift
+//  UIAlertControllerExtension.swift
 //  Innventory
 //
 //  Created by Xavier Chong on 2019-06-07.

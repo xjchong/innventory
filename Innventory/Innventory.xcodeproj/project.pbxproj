@@ -16,7 +16,10 @@
 		2AC2AFB822AAE45A00DB09B2 /* CardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC2AFB722AAE45A00DB09B2 /* CardService.swift */; };
 		2AD3C57E22AAED4F00611CD5 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD3C57D22AAED4F00611CD5 /* Card.swift */; };
 		2AD3C58122AB11D100611CD5 /* CardCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD3C58022AB11D100611CD5 /* CardCollectionViewModel.swift */; };
-		2AD3C58422AB14FA00611CD5 /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD3C58322AB14FA00611CD5 /* UIAlertController.swift */; };
+		2AD3C58422AB14FA00611CD5 /* UIAlertControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD3C58322AB14FA00611CD5 /* UIAlertControllerExtension.swift */; };
+		2AD3C58722AB18E200611CD5 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD3C58622AB18E200611CD5 /* Localizable.swift */; };
+		2AD3C58922AB192500611CD5 /* LocalizableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD3C58822AB192500611CD5 /* LocalizableExtension.swift */; };
+		2AD3C58B22AB198000611CD5 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD3C58A22AB198000611CD5 /* StringExtension.swift */; };
 		5193FE18EACC1DB11950D37F /* Pods_Innventory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B62D3CB6D56BB5F45FA885A /* Pods_Innventory.framework */; };
 		735BF3C92690023B60BFB1DB /* Pods_InnventoryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C63880883CB74A2935B5D40 /* Pods_InnventoryTests.framework */; };
 /* End PBXBuildFile section */
@@ -45,7 +48,10 @@
 		2AC2AFB722AAE45A00DB09B2 /* CardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardService.swift; sourceTree = "<group>"; };
 		2AD3C57D22AAED4F00611CD5 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		2AD3C58022AB11D100611CD5 /* CardCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewModel.swift; sourceTree = "<group>"; };
-		2AD3C58322AB14FA00611CD5 /* UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
+		2AD3C58322AB14FA00611CD5 /* UIAlertControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtension.swift; sourceTree = "<group>"; };
+		2AD3C58622AB18E200611CD5 /* Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
+		2AD3C58822AB192500611CD5 /* LocalizableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableExtension.swift; sourceTree = "<group>"; };
+		2AD3C58A22AB198000611CD5 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		5B62D3CB6D56BB5F45FA885A /* Pods_Innventory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Innventory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C63880883CB74A2935B5D40 /* Pods_InnventoryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InnventoryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		99232FF031ED81B6BFE3949E /* Pods-Innventory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Innventory.debug.xcconfig"; path = "Target Support Files/Pods-Innventory/Pods-Innventory.debug.xcconfig"; sourceTree = "<group>"; };
@@ -103,6 +109,7 @@
 				2AC2AFB322AAA34000DB09B2 /* Controllers */,
 				2AD3C57F22AB11A900611CD5 /* ViewModels */,
 				2AC2AFB222AAA33800DB09B2 /* Services */,
+				2AD3C58522AB18CA00611CD5 /* Protocols */,
 				2AD3C58222AB14E900611CD5 /* Extensions */,
 				2AC2AFB522AAA37300DB09B2 /* Supporting Files */,
 			);
@@ -171,9 +178,19 @@
 		2AD3C58222AB14E900611CD5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				2AD3C58322AB14FA00611CD5 /* UIAlertController.swift */,
+				2AD3C58822AB192500611CD5 /* LocalizableExtension.swift */,
+				2AD3C58A22AB198000611CD5 /* StringExtension.swift */,
+				2AD3C58322AB14FA00611CD5 /* UIAlertControllerExtension.swift */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		2AD3C58522AB18CA00611CD5 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				2AD3C58622AB18E200611CD5 /* Localizable.swift */,
+			);
+			name = Protocols;
 			sourceTree = "<group>";
 		};
 		9ACC01DDAA403EE97CE13C0A /* Pods */ = {
@@ -365,10 +382,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A923CD522AA8E46004F37D2 /* CardCollectionViewController.swift in Sources */,
+				2AD3C58722AB18E200611CD5 /* Localizable.swift in Sources */,
 				2AC2AFB822AAE45A00DB09B2 /* CardService.swift in Sources */,
 				2A923CD322AA8E46004F37D2 /* AppDelegate.swift in Sources */,
+				2AD3C58922AB192500611CD5 /* LocalizableExtension.swift in Sources */,
+				2AD3C58B22AB198000611CD5 /* StringExtension.swift in Sources */,
 				2AD3C58122AB11D100611CD5 /* CardCollectionViewModel.swift in Sources */,
-				2AD3C58422AB14FA00611CD5 /* UIAlertController.swift in Sources */,
+				2AD3C58422AB14FA00611CD5 /* UIAlertControllerExtension.swift in Sources */,
 				2AD3C57E22AAED4F00611CD5 /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

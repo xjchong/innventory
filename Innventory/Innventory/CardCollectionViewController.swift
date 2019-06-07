@@ -20,9 +20,9 @@ class CardCollectionViewController: UIViewController {
 		CardService.getAllCards { result in
 			switch result {
 			case .success(let cards):
-				print("CardCollectionViewController received success!")
+				print("CardCollectionViewController received success! (received \(cards.count) cards)")
 			case .failure(let error):
-				print("CardCollectionViewController received failure...")
+				print("CardCollectionViewController received failure... (error: \(error.localizedDescription)")
 			}
 		}
 	}

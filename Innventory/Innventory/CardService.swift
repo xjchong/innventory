@@ -15,6 +15,14 @@ class CardService {
 		static let getAllCardsURLString = "https://omgvamp-hearthstone-v1.p.rapidapi.com/cards"
 		static let getAllCardsKey = "9fa74cfb32msh677a6fff8b8380fp1fa79cjsn904c6b967133"
 		static let hostURLString = "omgvamp-hearthstone-v1.p.rapidapi.com"
+		
+		static let playableCardSets = ["Basic",
+									   "Classic",
+									   "Naxxramas",
+									   "Goblins vs Gnomes",
+									   "Blackrock Mountain",
+									   "Tavern Brawl",
+									   "The Grand Tournament"]
 	}
 	
 	private enum AttributeName {
@@ -22,7 +30,7 @@ class CardService {
 		static let key = "X-RapidAPI-Key"
 	}
 
-	static func getAllCards(completion: @escaping (Swift.Result<[Card]?, Error>) -> ()) {
+	static func getAllCards(completion: @escaping (Swift.Result<[Card], Error>) -> ()) {
 		Alamofire.request(Constant.getAllCardsURLString,
 						  headers: [AttributeName.host : Constant.hostURLString,
 									AttributeName.key : Constant.getAllCardsKey])
@@ -30,10 +38,16 @@ class CardService {
 			.responseJSON { response in
 				switch response.result {
 				case .success(let json):
-					#warning("Serialize card models from json")
-					print("Success!")
-					print(json)
-					completion(.success(nil))
+					let decoder = JSONDecoder()
+	
+					do {
+						let cardsBySet = try decoder.decode([String: [Card]].self, from: response.data!)
+						let cards = cardsBySet.flatMap { $0.value }
+
+						completion(.success(cards))
+					} catch let error {
+						completion(.failure(error))
+					}
 				case .failure(let error):
 					print("Failure...")
 					print(error)

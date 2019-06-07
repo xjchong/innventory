@@ -49,8 +49,6 @@ class CardService {
 						completion(.failure(error))
 					}
 				case .failure(let error):
-					print("Failure...")
-					print(error)
 					completion(.failure(error))
 				}
 		}

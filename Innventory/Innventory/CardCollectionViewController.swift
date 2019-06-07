@@ -6,25 +6,30 @@
 //  Copyright © 2019 XJCHONG. All rights reserved.
 //
 
-import UIKit
+import ReactiveKit
 
 
 class CardCollectionViewController: UIViewController {
-	
-	// MARK: - LifeCycle
+	private let viewModel = CardCollectionViewModel()
+	private let disposeBag = DisposeBag()
+}
 
+// MARK: - LifeCycle
+
+extension CardCollectionViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view.
+		bindViewModel()
 		
-		CardService.getAllCards { result in
-			switch result {
-			case .success(let cards):
-				print("CardCollectionViewController received success! (received \(cards.count) cards)")
-			case .failure(let error):
-				print("CardCollectionViewController received failure... (error: \(error.localizedDescription)")
-			}
-		}
+		viewModel.refreshCollection()
+	}
+	
+	private func bindViewModel() {
+		viewModel.errorMessages.observeNext { [weak self] errorMessage in
+			guard let self = self else { return }
+			
+			self.present(UIAlertController.error(message: errorMessage), animated: true)
+		}.dispose(in: disposeBag)
 	}
 }
-

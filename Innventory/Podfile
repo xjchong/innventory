@@ -8,6 +8,8 @@ target 'Innventory' do
   # Pods for Innventory
   pod 'Alamofire'
   pod 'PromiseKit'
+  pod 'ReactiveKit'
+  pod 'Bond'
 
   target 'InnventoryTests' do
     inherit! :search_paths

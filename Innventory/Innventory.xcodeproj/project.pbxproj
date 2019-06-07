@@ -15,6 +15,8 @@
 		2A923CE822AA8E47004F37D2 /* InnventoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A923CE722AA8E47004F37D2 /* InnventoryTests.swift */; };
 		2AC2AFB822AAE45A00DB09B2 /* CardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC2AFB722AAE45A00DB09B2 /* CardService.swift */; };
 		2AD3C57E22AAED4F00611CD5 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD3C57D22AAED4F00611CD5 /* Card.swift */; };
+		2AD3C58122AB11D100611CD5 /* CardCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD3C58022AB11D100611CD5 /* CardCollectionViewModel.swift */; };
+		2AD3C58422AB14FA00611CD5 /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD3C58322AB14FA00611CD5 /* UIAlertController.swift */; };
 		5193FE18EACC1DB11950D37F /* Pods_Innventory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B62D3CB6D56BB5F45FA885A /* Pods_Innventory.framework */; };
 		735BF3C92690023B60BFB1DB /* Pods_InnventoryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C63880883CB74A2935B5D40 /* Pods_InnventoryTests.framework */; };
 /* End PBXBuildFile section */
@@ -42,6 +44,8 @@
 		2A923CE922AA8E47004F37D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2AC2AFB722AAE45A00DB09B2 /* CardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardService.swift; sourceTree = "<group>"; };
 		2AD3C57D22AAED4F00611CD5 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		2AD3C58022AB11D100611CD5 /* CardCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewModel.swift; sourceTree = "<group>"; };
+		2AD3C58322AB14FA00611CD5 /* UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
 		5B62D3CB6D56BB5F45FA885A /* Pods_Innventory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Innventory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C63880883CB74A2935B5D40 /* Pods_InnventoryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InnventoryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		99232FF031ED81B6BFE3949E /* Pods-Innventory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Innventory.debug.xcconfig"; path = "Target Support Files/Pods-Innventory/Pods-Innventory.debug.xcconfig"; sourceTree = "<group>"; };
@@ -97,7 +101,9 @@
 				2AC2AFB622AAA38E00DB09B2 /* Models */,
 				2AC2AFB422AAA35100DB09B2 /* Views */,
 				2AC2AFB322AAA34000DB09B2 /* Controllers */,
+				2AD3C57F22AB11A900611CD5 /* ViewModels */,
 				2AC2AFB222AAA33800DB09B2 /* Services */,
+				2AD3C58222AB14E900611CD5 /* Extensions */,
 				2AC2AFB522AAA37300DB09B2 /* Supporting Files */,
 			);
 			path = Innventory;
@@ -152,6 +158,22 @@
 				2AD3C57D22AAED4F00611CD5 /* Card.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		2AD3C57F22AB11A900611CD5 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				2AD3C58022AB11D100611CD5 /* CardCollectionViewModel.swift */,
+			);
+			name = ViewModels;
+			sourceTree = "<group>";
+		};
+		2AD3C58222AB14E900611CD5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2AD3C58322AB14FA00611CD5 /* UIAlertController.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		9ACC01DDAA403EE97CE13C0A /* Pods */ = {
@@ -345,6 +367,8 @@
 				2A923CD522AA8E46004F37D2 /* CardCollectionViewController.swift in Sources */,
 				2AC2AFB822AAE45A00DB09B2 /* CardService.swift in Sources */,
 				2A923CD322AA8E46004F37D2 /* AppDelegate.swift in Sources */,
+				2AD3C58122AB11D100611CD5 /* CardCollectionViewModel.swift in Sources */,
+				2AD3C58422AB14FA00611CD5 /* UIAlertController.swift in Sources */,
 				2AD3C57E22AAED4F00611CD5 /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

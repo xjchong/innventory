@@ -11,6 +11,12 @@ import Bond
 
 
 class CardCollectionViewModel {
+	enum Strings: String, Localizable {
+		case refreshErrorMessage
+		
+		var tableName: String { return String(describing: self) }
+	}
+	
 	let cards = MutableObservableArray<Card>()
 	let isLoading = Observable<Bool>(false)
 	let errorMessages = SafePublishSubject<String>()
@@ -32,8 +38,7 @@ extension CardCollectionViewModel {
 			case .success(let cards):
 				self.cards.replace(with: cards)
 			case .failure:
-				#warning("Localize error messages")
-				self.errorMessages.next("Something went wrong! :(")
+				self.errorMessages.next(Strings.refreshErrorMessage.localized)
 			}
 		}
 	}

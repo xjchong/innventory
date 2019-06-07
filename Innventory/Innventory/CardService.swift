@@ -11,7 +11,7 @@ import Alamofire
 
 class CardService {
 	
-	private enum Constant {
+	private enum Constants {
 		static let getAllCardsURLString = "https://omgvamp-hearthstone-v1.p.rapidapi.com/cards"
 		static let getAllCardsKey = "9fa74cfb32msh677a6fff8b8380fp1fa79cjsn904c6b967133"
 		static let hostURLString = "omgvamp-hearthstone-v1.p.rapidapi.com"
@@ -25,19 +25,19 @@ class CardService {
 									   "The Grand Tournament"]
 	}
 	
-	private enum AttributeName {
+	private enum AttributeNames {
 		static let host = "X-RapidAPI-Host"
 		static let key = "X-RapidAPI-Key"
 	}
 
 	static func getAllCards(completion: @escaping (Swift.Result<[Card], Error>) -> ()) {
-		Alamofire.request(Constant.getAllCardsURLString,
-						  headers: [AttributeName.host : Constant.hostURLString,
-									AttributeName.key : Constant.getAllCardsKey])
+		Alamofire.request(Constants.getAllCardsURLString,
+						  headers: [AttributeNames.host : Constants.hostURLString,
+									AttributeNames.key : Constants.getAllCardsKey])
 			.validate()
 			.responseJSON { response in
 				switch response.result {
-				case .success(let json):
+				case .success:
 					let decoder = JSONDecoder()
 	
 					do {

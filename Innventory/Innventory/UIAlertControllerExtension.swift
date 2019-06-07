@@ -10,11 +10,19 @@ import UIKit
 
 
 extension UIAlertController {
-	class func error(message: String) -> UIAlertController {
-		#warning("Localize strings")
-		let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+	private enum Strings: String, Localizable {
+		case errorAlertTitle
+		case okActionTitle
 		
-		alertController.addAction(UIAlertAction(title: "OK", style: .default))
+		var tableName: String { return String(describing: self) }
+	}
+	
+	class func error(message: String) -> UIAlertController {
+		let alertController = UIAlertController(title: Strings.errorAlertTitle.localized,
+												message: message,
+												preferredStyle: .alert)
+		
+		alertController.addAction(UIAlertAction(title: Strings.okActionTitle.localized, style: .default))
 
 		return alertController
 	}

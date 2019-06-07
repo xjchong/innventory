@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  CardCollectionViewController.swift
 //  Innventory
 //
 //  Created by Xavier Chong on 2019-06-07.
@@ -8,13 +8,23 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+
+class CardCollectionViewController: UIViewController {
+	
+	// MARK: - LifeCycle
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view.
+		
+		CardService.getAllCards { result in
+			switch result {
+			case .success(let cards):
+				print("CardCollectionViewController received success!")
+			case .failure(let error):
+				print("CardCollectionViewController received failure...")
+			}
+		}
 	}
-
-
 }
 

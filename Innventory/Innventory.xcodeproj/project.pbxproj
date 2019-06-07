@@ -3,16 +3,18 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		2A923CD322AA8E46004F37D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A923CD222AA8E46004F37D2 /* AppDelegate.swift */; };
 		2A923CD522AA8E46004F37D2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A923CD422AA8E46004F37D2 /* ViewController.swift */; };
-		2A923CD822AA8E46004F37D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A923CD622AA8E46004F37D2 /* Main.storyboard */; };
+		2A923CD822AA8E46004F37D2 /* CardCollection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A923CD622AA8E46004F37D2 /* CardCollection.storyboard */; };
 		2A923CDA22AA8E47004F37D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A923CD922AA8E47004F37D2 /* Assets.xcassets */; };
 		2A923CDD22AA8E47004F37D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A923CDB22AA8E47004F37D2 /* LaunchScreen.storyboard */; };
 		2A923CE822AA8E47004F37D2 /* InnventoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A923CE722AA8E47004F37D2 /* InnventoryTests.swift */; };
+		2AC2AFB822AAE45A00DB09B2 /* CardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC2AFB722AAE45A00DB09B2 /* CardService.swift */; };
+		2AD3C57E22AAED4F00611CD5 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD3C57D22AAED4F00611CD5 /* Card.swift */; };
 		5193FE18EACC1DB11950D37F /* Pods_Innventory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B62D3CB6D56BB5F45FA885A /* Pods_Innventory.framework */; };
 		735BF3C92690023B60BFB1DB /* Pods_InnventoryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C63880883CB74A2935B5D40 /* Pods_InnventoryTests.framework */; };
 /* End PBXBuildFile section */
@@ -31,13 +33,15 @@
 		2A923CCF22AA8E46004F37D2 /* Innventory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Innventory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A923CD222AA8E46004F37D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2A923CD422AA8E46004F37D2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		2A923CD722AA8E46004F37D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2A923CD722AA8E46004F37D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/CardCollection.storyboard; sourceTree = "<group>"; };
 		2A923CD922AA8E47004F37D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2A923CDC22AA8E47004F37D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2A923CDE22AA8E47004F37D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A923CE322AA8E47004F37D2 /* InnventoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InnventoryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A923CE722AA8E47004F37D2 /* InnventoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InnventoryTests.swift; sourceTree = "<group>"; };
 		2A923CE922AA8E47004F37D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2AC2AFB722AAE45A00DB09B2 /* CardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardService.swift; sourceTree = "<group>"; };
+		2AD3C57D22AAED4F00611CD5 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		5B62D3CB6D56BB5F45FA885A /* Pods_Innventory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Innventory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C63880883CB74A2935B5D40 /* Pods_InnventoryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InnventoryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		99232FF031ED81B6BFE3949E /* Pods-Innventory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Innventory.debug.xcconfig"; path = "Target Support Files/Pods-Innventory/Pods-Innventory.debug.xcconfig"; sourceTree = "<group>"; };
@@ -90,11 +94,11 @@
 			isa = PBXGroup;
 			children = (
 				2A923CD222AA8E46004F37D2 /* AppDelegate.swift */,
-				2A923CD422AA8E46004F37D2 /* ViewController.swift */,
-				2A923CD622AA8E46004F37D2 /* Main.storyboard */,
-				2A923CD922AA8E47004F37D2 /* Assets.xcassets */,
-				2A923CDB22AA8E47004F37D2 /* LaunchScreen.storyboard */,
-				2A923CDE22AA8E47004F37D2 /* Info.plist */,
+				2AC2AFB622AAA38E00DB09B2 /* Models */,
+				2AC2AFB422AAA35100DB09B2 /* Views */,
+				2AC2AFB322AAA34000DB09B2 /* Controllers */,
+				2AC2AFB222AAA33800DB09B2 /* Services */,
+				2AC2AFB522AAA37300DB09B2 /* Supporting Files */,
 			);
 			path = Innventory;
 			sourceTree = "<group>";
@@ -108,6 +112,48 @@
 			path = InnventoryTests;
 			sourceTree = "<group>";
 		};
+		2AC2AFB222AAA33800DB09B2 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				2AC2AFB722AAE45A00DB09B2 /* CardService.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		2AC2AFB322AAA34000DB09B2 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2A923CD422AA8E46004F37D2 /* ViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		2AC2AFB422AAA35100DB09B2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2A923CDB22AA8E47004F37D2 /* LaunchScreen.storyboard */,
+				2A923CD622AA8E46004F37D2 /* CardCollection.storyboard */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		2AC2AFB522AAA37300DB09B2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2A923CD922AA8E47004F37D2 /* Assets.xcassets */,
+				2A923CDE22AA8E47004F37D2 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2AC2AFB622AAA38E00DB09B2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2AD3C57D22AAED4F00611CD5 /* Card.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		9ACC01DDAA403EE97CE13C0A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -116,7 +162,6 @@
 				C1B7C46F36239A9D0BDAD125 /* Pods-InnventoryTests.debug.xcconfig */,
 				9DEBBBF7791B5A801F89ED71 /* Pods-InnventoryTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -215,7 +260,7 @@
 			files = (
 				2A923CDD22AA8E47004F37D2 /* LaunchScreen.storyboard in Resources */,
 				2A923CDA22AA8E47004F37D2 /* Assets.xcassets in Resources */,
-				2A923CD822AA8E46004F37D2 /* Main.storyboard in Resources */,
+				2A923CD822AA8E46004F37D2 /* CardCollection.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,7 +343,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A923CD522AA8E46004F37D2 /* ViewController.swift in Sources */,
+				2AC2AFB822AAE45A00DB09B2 /* CardService.swift in Sources */,
 				2A923CD322AA8E46004F37D2 /* AppDelegate.swift in Sources */,
+				2AD3C57E22AAED4F00611CD5 /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,12 +368,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		2A923CD622AA8E46004F37D2 /* Main.storyboard */ = {
+		2A923CD622AA8E46004F37D2 /* CardCollection.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				2A923CD722AA8E46004F37D2 /* Base */,
 			);
-			name = Main.storyboard;
+			name = CardCollection.storyboard;
 			sourceTree = "<group>";
 		};
 		2A923CDB22AA8E47004F37D2 /* LaunchScreen.storyboard */ = {

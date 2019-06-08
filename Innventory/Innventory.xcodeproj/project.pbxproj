@@ -22,6 +22,9 @@
 		2AD3C58B22AB198000611CD5 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD3C58A22AB198000611CD5 /* StringExtension.swift */; };
 		2AD3C58E22AB285200611CD5 /* CardCollectionViewModel.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2AD3C58D22AB285200611CD5 /* CardCollectionViewModel.strings */; };
 		2AD3C59022AB2B0C00611CD5 /* UIAlertController.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2AD3C58F22AB2B0C00611CD5 /* UIAlertController.strings */; };
+		2AD3C59222AB4C1600611CD5 /* CardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AD3C59122AB4C1600611CD5 /* CardCollectionViewCell.xib */; };
+		2AD3C59422AB500C00611CD5 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD3C59322AB500C00611CD5 /* CardCollectionViewCell.swift */; };
+		2AD3C59622AB7EA700611CD5 /* CardCollectionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD3C59522AB7EA700611CD5 /* CardCollectionCellViewModel.swift */; };
 		5193FE18EACC1DB11950D37F /* Pods_Innventory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B62D3CB6D56BB5F45FA885A /* Pods_Innventory.framework */; };
 		735BF3C92690023B60BFB1DB /* Pods_InnventoryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C63880883CB74A2935B5D40 /* Pods_InnventoryTests.framework */; };
 /* End PBXBuildFile section */
@@ -56,6 +59,9 @@
 		2AD3C58A22AB198000611CD5 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		2AD3C58D22AB285200611CD5 /* CardCollectionViewModel.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = CardCollectionViewModel.strings; sourceTree = "<group>"; };
 		2AD3C58F22AB2B0C00611CD5 /* UIAlertController.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = UIAlertController.strings; sourceTree = "<group>"; };
+		2AD3C59122AB4C1600611CD5 /* CardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardCollectionViewCell.xib; sourceTree = "<group>"; };
+		2AD3C59322AB500C00611CD5 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
+		2AD3C59522AB7EA700611CD5 /* CardCollectionCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionCellViewModel.swift; sourceTree = "<group>"; };
 		5B62D3CB6D56BB5F45FA885A /* Pods_Innventory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Innventory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C63880883CB74A2935B5D40 /* Pods_InnventoryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InnventoryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		99232FF031ED81B6BFE3949E /* Pods-Innventory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Innventory.debug.xcconfig"; path = "Target Support Files/Pods-Innventory/Pods-Innventory.debug.xcconfig"; sourceTree = "<group>"; };
@@ -151,6 +157,8 @@
 			children = (
 				2A923CDB22AA8E47004F37D2 /* LaunchScreen.storyboard */,
 				2A923CD622AA8E46004F37D2 /* CardCollection.storyboard */,
+				2AD3C59122AB4C1600611CD5 /* CardCollectionViewCell.xib */,
+				2AD3C59322AB500C00611CD5 /* CardCollectionViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -176,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				2AD3C58022AB11D100611CD5 /* CardCollectionViewModel.swift */,
+				2AD3C59522AB7EA700611CD5 /* CardCollectionCellViewModel.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -312,6 +321,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A923CDD22AA8E47004F37D2 /* LaunchScreen.storyboard in Resources */,
+				2AD3C59222AB4C1600611CD5 /* CardCollectionViewCell.xib in Resources */,
 				2AD3C58E22AB285200611CD5 /* CardCollectionViewModel.strings in Resources */,
 				2A923CDA22AA8E47004F37D2 /* Assets.xcassets in Resources */,
 				2A923CD822AA8E46004F37D2 /* CardCollection.storyboard in Resources */,
@@ -401,10 +411,12 @@
 				2AD3C58722AB18E200611CD5 /* Localizable.swift in Sources */,
 				2AC2AFB822AAE45A00DB09B2 /* CardService.swift in Sources */,
 				2A923CD322AA8E46004F37D2 /* AppDelegate.swift in Sources */,
+				2AD3C59622AB7EA700611CD5 /* CardCollectionCellViewModel.swift in Sources */,
 				2AD3C58922AB192500611CD5 /* LocalizableExtension.swift in Sources */,
 				2AD3C58B22AB198000611CD5 /* StringExtension.swift in Sources */,
 				2AD3C58122AB11D100611CD5 /* CardCollectionViewModel.swift in Sources */,
 				2AD3C58422AB14FA00611CD5 /* UIAlertControllerExtension.swift in Sources */,
+				2AD3C59422AB500C00611CD5 /* CardCollectionViewCell.swift in Sources */,
 				2AD3C57E22AAED4F00611CD5 /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

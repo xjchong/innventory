@@ -30,7 +30,7 @@ class CardService {
 		static let key = "X-RapidAPI-Key"
 	}
 
-	static func getAllCards(completion: @escaping (Swift.Result<[Card], Error>) -> ()) {
+	static func getAllCards(completion: @escaping (Swift.Result<[Card], Error>) -> Void) {
 		Alamofire.request(Constants.getAllCardsURLString,
 						  headers: [AttributeNames.host : Constants.hostURLString,
 									AttributeNames.key : Constants.getAllCardsKey])

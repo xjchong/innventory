@@ -25,6 +25,7 @@
 		2AD3C59222AB4C1600611CD5 /* CardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AD3C59122AB4C1600611CD5 /* CardCollectionViewCell.xib */; };
 		2AD3C59422AB500C00611CD5 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD3C59322AB500C00611CD5 /* CardCollectionViewCell.swift */; };
 		2AD3C59622AB7EA700611CD5 /* CardCollectionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD3C59522AB7EA700611CD5 /* CardCollectionCellViewModel.swift */; };
+		2AD3C59822ABD1A600611CD5 /* CardCollectionCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD3C59722ABD1A600611CD5 /* CardCollectionCellViewModelTests.swift */; };
 		5193FE18EACC1DB11950D37F /* Pods_Innventory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B62D3CB6D56BB5F45FA885A /* Pods_Innventory.framework */; };
 		735BF3C92690023B60BFB1DB /* Pods_InnventoryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C63880883CB74A2935B5D40 /* Pods_InnventoryTests.framework */; };
 /* End PBXBuildFile section */
@@ -62,6 +63,7 @@
 		2AD3C59122AB4C1600611CD5 /* CardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardCollectionViewCell.xib; sourceTree = "<group>"; };
 		2AD3C59322AB500C00611CD5 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		2AD3C59522AB7EA700611CD5 /* CardCollectionCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionCellViewModel.swift; sourceTree = "<group>"; };
+		2AD3C59722ABD1A600611CD5 /* CardCollectionCellViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionCellViewModelTests.swift; sourceTree = "<group>"; };
 		5B62D3CB6D56BB5F45FA885A /* Pods_Innventory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Innventory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C63880883CB74A2935B5D40 /* Pods_InnventoryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InnventoryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		99232FF031ED81B6BFE3949E /* Pods-Innventory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Innventory.debug.xcconfig"; path = "Target Support Files/Pods-Innventory/Pods-Innventory.debug.xcconfig"; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 		2A923CE622AA8E47004F37D2 /* InnventoryTests */ = {
 			isa = PBXGroup;
 			children = (
+				2AD3C59722ABD1A600611CD5 /* CardCollectionCellViewModelTests.swift */,
 				2A923CE722AA8E47004F37D2 /* InnventoryTests.swift */,
 				2A923CE922AA8E47004F37D2 /* Info.plist */,
 			);
@@ -425,6 +428,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2AD3C59822ABD1A600611CD5 /* CardCollectionCellViewModelTests.swift in Sources */,
 				2A923CE822AA8E47004F37D2 /* InnventoryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -21,12 +21,12 @@ class CardCollectionCellViewModel {
 // MARK: - Public
 
 extension CardCollectionCellViewModel {
-	func configure(with card: Card) {
+	func configure(with card: Card, completion: (() -> Void)? = nil) {
 		name.value = card.name
 		type.value = card.type
 		playerClass.value = card.playerClass
 		
-		getImage(from: card.imageURLString)
+		getImage(from: card.imageURLString, completion: completion)
 	}
 }
 
@@ -34,22 +34,23 @@ extension CardCollectionCellViewModel {
 // MARK: - Private
 
 private extension CardCollectionCellViewModel {
-	func getImage(from imageURLString: String?) {
+	func getImage(from imageURLString: String?, completion: (() -> Void)?) {
 		#warning("Set a placeholder image")
 		image.value = nil
 		
 		guard
 			let imageURLString = imageURLString,
 			let imageURL = URL(string: imageURLString)
-			else { return }
+			else {
+				completion?()
+				return
+		}
 		
 		URLSession.shared.dataTask(with: imageURL) { [weak self] data, response, error in
-			guard let self = self else { return }
+			defer { completion?() }
 			
-			guard error == nil else {
-				// Log an error here.
-				return
-			}
+			guard let self = self else { return }
+			guard error == nil else { return }
 			
 			guard
 				let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,

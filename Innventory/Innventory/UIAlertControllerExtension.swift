@@ -14,7 +14,7 @@ extension UIAlertController {
 		case errorAlertTitle
 		case okActionTitle
 		
-		var tableName: String { return String(describing: self) }
+		var tableName: String { return "UIAlertController" }
 	}
 	
 	class func error(message: String) -> UIAlertController {

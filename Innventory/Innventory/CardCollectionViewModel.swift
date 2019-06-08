@@ -12,14 +12,17 @@ import Bond
 
 class CardCollectionViewModel {
 	enum Strings: String, Localizable {
+		case navigationTitle
 		case refreshErrorMessage
-		
-		var tableName: String { return String(describing: self) }
+
+		var tableName: String { return "CardCollectionViewModel" }
 	}
 	
-	let cards = MutableObservableArray<Card>()
+	let cellViewModels = MutableObservableArray<CardCollectionCellViewModel>()
 	let isLoading = Observable<Bool>(false)
 	let errorMessages = SafePublishSubject<String>()
+	
+	let title = Strings.navigationTitle.localized
 }
 
 
@@ -36,7 +39,16 @@ extension CardCollectionViewModel {
 			
 			switch result {
 			case .success(let cards):
-				self.cards.replace(with: cards)
+				self.cellViewModels.replace(with: cards.map {
+					let cellViewModel = CardCollectionCellViewModel()
+					
+					cellViewModel.configure(with: $0)
+					
+					return cellViewModel
+				})
+				
+				#warning("Remove debug statement")
+				print("SUCCESS!")
 			case .failure:
 				self.errorMessages.next(Strings.refreshErrorMessage.localized)
 			}

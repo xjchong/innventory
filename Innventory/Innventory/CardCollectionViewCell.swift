@@ -10,7 +10,7 @@ import UIKit
 import ReactiveKit
 
 
-class CardCollectionViewCell: UICollectionViewCell {
+class CardCollectionViewCell: UICollectionViewCell, ReusableView, NibLoadableView {
 	@IBOutlet weak var nameLabel: UILabel!
 	@IBOutlet weak var typeLabel: UILabel!
 	@IBOutlet weak var playerClassLabel: UILabel!

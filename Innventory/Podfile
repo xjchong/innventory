@@ -6,10 +6,11 @@ target 'Innventory' do
   use_frameworks!
 
   # Pods for Innventory
+
   pod 'Alamofire'
-  pod 'PromiseKit'
   pod 'ReactiveKit'
   pod 'Bond'
+  pod 'Kingfisher'
 
   target 'InnventoryTests' do
     inherit! :search_paths

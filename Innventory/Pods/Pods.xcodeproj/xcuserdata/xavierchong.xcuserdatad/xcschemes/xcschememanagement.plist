@@ -25,21 +25,21 @@
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
-		<key>Pods-Innventory.xcscheme</key>
+		<key>Kingfisher.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>3</integer>
 		</dict>
-		<key>Pods-InnventoryTests.xcscheme</key>
+		<key>Pods-Innventory.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>4</integer>
 		</dict>
-		<key>PromiseKit.xcscheme</key>
+		<key>Pods-InnventoryTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>

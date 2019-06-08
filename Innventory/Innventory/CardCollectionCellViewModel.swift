@@ -59,6 +59,6 @@ private extension CardCollectionCellViewModel {
 				else { return }
 			
 			self.image.value = UIImage(data: data)
-		}
+		}.resume()
 	}
 }

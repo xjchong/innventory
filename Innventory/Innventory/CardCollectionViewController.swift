@@ -30,6 +30,8 @@ class CardCollectionViewController: UIViewController {
 	@IBOutlet weak var collectionView: UICollectionView!
 	@IBOutlet weak var collectionViewLayout: UICollectionViewFlowLayout!
 	
+	@IBOutlet weak var emptyStateView: UIView!
+	
 	@IBOutlet weak var searchBarButton: UIBarButtonItem!
 	@IBOutlet weak var searchBar: UISearchBar!
 	@IBOutlet weak var searchBarTopConstraint: NSLayoutConstraint!
@@ -62,6 +64,10 @@ extension CardCollectionViewController {
 		viewModel.filteredCellViewModels.observeNext { [weak self] _ in
 			self?.collectionView.reloadData()
 		}.dispose(in: disposeBag)
+		
+		viewModel.filteredCellViewModels
+			.map { !$0.collection.isEmpty }
+			.bind(to: emptyStateView.reactive.isHidden)
 
 		viewModel.isSearching
 			.map { $0 ? nil : UIImage(named: Constants.searchButtonImageName) }

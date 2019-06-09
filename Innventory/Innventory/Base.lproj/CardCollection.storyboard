@@ -33,16 +33,40 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gmr-aQ-m5s" userLabel="Empty State View">
+                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There's nothing here!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2S8-cK-ouq">
+                                        <rect key="frame" x="125.66666666666669" y="325.66666666666669" width="163" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        </variation>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="2S8-cK-ouq" firstAttribute="centerX" secondItem="gmr-aQ-m5s" secondAttribute="centerX" id="tMq-RB-TX4"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="gmr-aQ-m5s" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="0NP-K2-OoM"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dbi-aQ-W5u" secondAttribute="trailing" id="2DD-ns-YBo"/>
+                            <constraint firstItem="2S8-cK-ouq" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="4JM-jg-MIR"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="gmr-aQ-m5s" secondAttribute="bottom" id="5SJ-9a-a0V"/>
+                            <constraint firstItem="gmr-aQ-m5s" firstAttribute="centerY" secondItem="dbi-aQ-W5u" secondAttribute="centerY" id="718-MB-Io2"/>
                             <constraint firstAttribute="trailing" secondItem="Snj-Xa-Wq2" secondAttribute="trailing" id="DtH-SV-l9h"/>
                             <constraint firstItem="Snj-Xa-Wq2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="FAM-fy-wdQ"/>
                             <constraint firstItem="dbi-aQ-W5u" firstAttribute="top" secondItem="Snj-Xa-Wq2" secondAttribute="bottom" id="K3i-Ry-Ga4"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="dbi-aQ-W5u" secondAttribute="bottom" id="KYD-yR-Q8a"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="Snj-Xa-Wq2" secondAttribute="top" constant="56" id="asY-VO-iuK"/>
                             <constraint firstItem="dbi-aQ-W5u" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="f57-WE-yih"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gmr-aQ-m5s" secondAttribute="trailing" id="h3F-Ff-tNe"/>
+                            <constraint firstItem="gmr-aQ-m5s" firstAttribute="top" secondItem="Snj-Xa-Wq2" secondAttribute="bottom" id="mXg-12-uuN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -57,6 +81,7 @@
                     <connections>
                         <outlet property="collectionView" destination="dbi-aQ-W5u" id="ZS5-WV-rLV"/>
                         <outlet property="collectionViewLayout" destination="rm3-XN-EC2" id="P7y-Mh-fUK"/>
+                        <outlet property="emptyStateView" destination="gmr-aQ-m5s" id="yeD-rW-DsX"/>
                         <outlet property="searchBar" destination="Snj-Xa-Wq2" id="TbA-aV-EC2"/>
                         <outlet property="searchBarButton" destination="co8-7u-E8N" id="558-0r-6Ne"/>
                         <outlet property="searchBarTopConstraint" destination="asY-VO-iuK" id="eXp-nc-Fl4"/>
@@ -64,7 +89,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="961" y="673"/>
+            <point key="canvasLocation" x="960.86956521739137" y="672.554347826087"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="IVl-u0-Iga">

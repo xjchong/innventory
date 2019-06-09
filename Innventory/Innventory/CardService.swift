@@ -10,7 +10,6 @@ import Alamofire
 
 
 class CardService {
-	
 	private enum Constants {
 		static let getAllCardsURLString = "https://omgvamp-hearthstone-v1.p.rapidapi.com/cards"
 		static let getAllCardsKey = "9fa74cfb32msh677a6fff8b8380fp1fa79cjsn904c6b967133"

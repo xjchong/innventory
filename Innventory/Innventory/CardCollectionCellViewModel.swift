@@ -15,9 +15,10 @@ class CardCollectionCellViewModel {
 		static let placeholderImage = UIImage(named: "card_image_placeholder")
 		static let placeholderBadImage = UIImage(named: "card_image_placeholder_404")
 	}
+	
 	let name = Observable<String?>(nil)
-	let type = Observable<String?>(nil)
-	let playerClass = Observable<String?>(nil)
+	let type = Observable<CardType?>(nil)
+	let playerClass = Observable<PlayerClass?>(nil)
 	let imageURLString = Observable<String?>(nil)
 	let image = Observable<UIImage?>(nil)
 }

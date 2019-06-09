@@ -32,6 +32,7 @@
 		2AD3C5A022ABDDA800611CD5 /* NibLoadableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD3C59F22ABDDA800611CD5 /* NibLoadableViewExtension.swift */; };
 		2AD3C5A222ABDDD400611CD5 /* UICollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD3C5A122ABDDD400611CD5 /* UICollectionViewExtension.swift */; };
 		2AD3C5A922AD915200611CD5 /* PillLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD3C5A822AD915200611CD5 /* PillLabel.swift */; };
+		2AD3C5AB22AD9A6800611CD5 /* CardCollectionViewCell.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2AD3C5AA22AD9A6800611CD5 /* CardCollectionViewCell.strings */; };
 		5193FE18EACC1DB11950D37F /* Pods_Innventory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B62D3CB6D56BB5F45FA885A /* Pods_Innventory.framework */; };
 		735BF3C92690023B60BFB1DB /* Pods_InnventoryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C63880883CB74A2935B5D40 /* Pods_InnventoryTests.framework */; };
 /* End PBXBuildFile section */
@@ -76,6 +77,7 @@
 		2AD3C59F22ABDDA800611CD5 /* NibLoadableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoadableViewExtension.swift; sourceTree = "<group>"; };
 		2AD3C5A122ABDDD400611CD5 /* UICollectionViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtension.swift; sourceTree = "<group>"; };
 		2AD3C5A822AD915200611CD5 /* PillLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillLabel.swift; sourceTree = "<group>"; };
+		2AD3C5AA22AD9A6800611CD5 /* CardCollectionViewCell.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = CardCollectionViewCell.strings; sourceTree = "<group>"; };
 		5B62D3CB6D56BB5F45FA885A /* Pods_Innventory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Innventory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C63880883CB74A2935B5D40 /* Pods_InnventoryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InnventoryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		99232FF031ED81B6BFE3949E /* Pods-Innventory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Innventory.debug.xcconfig"; path = "Target Support Files/Pods-Innventory/Pods-Innventory.debug.xcconfig"; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 			children = (
 				2AD3C58D22AB285200611CD5 /* CardCollectionViewController.strings */,
 				2AD3C58F22AB2B0C00611CD5 /* UIAlertController.strings */,
+				2AD3C5AA22AD9A6800611CD5 /* CardCollectionViewCell.strings */,
 			);
 			name = Strings;
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A923CDD22AA8E47004F37D2 /* LaunchScreen.storyboard in Resources */,
+				2AD3C5AB22AD9A6800611CD5 /* CardCollectionViewCell.strings in Resources */,
 				2AD3C59222AB4C1600611CD5 /* CardCollectionViewCell.xib in Resources */,
 				2AD3C58E22AB285200611CD5 /* CardCollectionViewController.strings in Resources */,
 				2A923CDA22AA8E47004F37D2 /* Assets.xcassets in Resources */,

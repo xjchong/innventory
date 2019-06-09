@@ -11,6 +11,13 @@ import ReactiveKit
 
 
 class CardCollectionViewCell: UICollectionViewCell, ReusableView, NibLoadableView {
+	private enum Constants {
+		static let cornerRadiusFactor: CGFloat = 10
+		static let shadowRadiusFactor: CGFloat = 5
+		static let shadowOpacity: Float = 0.2
+	}
+	
+	@IBOutlet weak var roundCardView: UIView!
 	@IBOutlet weak var nameLabel: UILabel!
 	@IBOutlet weak var typeLabel: UILabel!
 	@IBOutlet weak var playerClassLabel: UILabel!
@@ -23,6 +30,23 @@ class CardCollectionViewCell: UICollectionViewCell, ReusableView, NibLoadableVie
 // MARK: - LifeCycle
 
 extension CardCollectionViewCell {
+	override func layoutSubviews() {
+		super.layoutSubviews()
+		
+		let cornerRadius: CGFloat = bounds.width/Constants.cornerRadiusFactor
+		
+		layer.masksToBounds = false
+		layer.cornerRadius = cornerRadius
+		layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius).cgPath
+		layer.shadowRadius = cornerRadius/Constants.shadowRadiusFactor
+		layer.shadowColor = UIColor.black.cgColor
+		layer.shadowOpacity = Constants.shadowOpacity
+		layer.shadowOffset = CGSize(width: 0, height: 0)
+		
+		roundCardView.layer.masksToBounds = false
+		roundCardView.layer.cornerRadius = cornerRadius
+	}
+	
 	func bind(to viewModel: CardCollectionCellViewModel) {
 		disposeBag.dispose()
 		

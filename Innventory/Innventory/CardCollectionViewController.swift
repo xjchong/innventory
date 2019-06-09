@@ -20,8 +20,6 @@ class CardCollectionViewController: UIViewController {
 	}
 	
 	private enum Constants {
-		static let collectionViewSectionInset = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
-		static let collectionViewMinimumInteritemSpacing: CGFloat = 12
 		static let cellWidthFactor: CGFloat = 2.2
 		static let cellHeightFactor: CGFloat = 1.2
 		
@@ -118,8 +116,7 @@ extension CardCollectionViewController: UICollectionViewDataSource {
 		let cellViewModel = viewModel.cellViewModel(for: indexPath)
 		
 		cell.bind(to: cellViewModel)
-		cell.translatesAutoresizingMaskIntoConstraints = true
-		
+
 		return cell
 	}
 }
@@ -150,12 +147,16 @@ private extension CardCollectionViewController {
 private extension CardCollectionViewController {
 	func setupUI() {
 		let screenWidth = UIScreen.main.bounds.width
-		let refreshControl = UIRefreshControl()
+		let cellWidth = screenWidth/Constants.cellWidthFactor
+		let itemSpacing = floor((screenWidth - (cellWidth*2))/3)
+		let sectionInset = UIEdgeInsets(top: itemSpacing, left: itemSpacing, bottom: itemSpacing, right: itemSpacing)
 		
+		let refreshControl = UIRefreshControl()
+
 		title = Strings.navigationTitle.localized
 		
-		collectionViewLayout.sectionInset = Constants.collectionViewSectionInset
-		collectionViewLayout.minimumInteritemSpacing = Constants.collectionViewMinimumInteritemSpacing
+		collectionViewLayout.sectionInset = sectionInset
+		collectionViewLayout.minimumInteritemSpacing = itemSpacing
 		collectionViewLayout.itemSize = CGSize(width: screenWidth/Constants.cellWidthFactor,
 											   height: screenWidth/Constants.cellHeightFactor)
 		

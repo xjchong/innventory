@@ -15,6 +15,8 @@ class CardCollectionViewCell: UICollectionViewCell, ReusableView, NibLoadableVie
 	@IBOutlet weak var typeLabel: UILabel!
 	@IBOutlet weak var playerClassLabel: UILabel!
 	@IBOutlet weak var imageView: UIImageView!
+	
+	private let disposeBag = DisposeBag()
 }
 
 
@@ -22,10 +24,14 @@ class CardCollectionViewCell: UICollectionViewCell, ReusableView, NibLoadableVie
 
 extension CardCollectionViewCell {
 	func bind(to viewModel: CardCollectionCellViewModel) {
-		viewModel.name.bind(to: nameLabel.reactive.text)
-		viewModel.type.bind(to: typeLabel.reactive.text)
-		viewModel.playerClass.bind(to: playerClassLabel.reactive.text)
-		viewModel.image.bind(to: imageView.reactive.image)
+		disposeBag.dispose()
+		
+		viewModel.name.bind(to: nameLabel.reactive.text).dispose(in: disposeBag)
+		viewModel.type.bind(to: typeLabel.reactive.text).dispose(in: disposeBag)
+		viewModel.playerClass.bind(to: playerClassLabel.reactive.text).dispose(in: disposeBag)
+		viewModel.image.bind(to: imageView.reactive.image).dispose(in: disposeBag)
+		
+		viewModel.getImage()
 	}
 }
 

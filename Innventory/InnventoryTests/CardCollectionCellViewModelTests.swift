@@ -30,8 +30,16 @@ class CardCollectionCellViewModelTests: XCTestCase {
 		XCTAssertNil(viewModel.playerClass.value)
 	}
 	
-	func testEmptyImage() {
+	func testEmptyImageBeforeLoad() {
 		XCTAssertNil(viewModel.image.value)
+	}
+	
+	func testEmptyImageAfterLoad() {
+		viewModel.getImage() { [weak self] in
+			guard let self = self else { return }
+			
+			XCTAssertNil(self.viewModel.image.value)
+		}
 	}
 	
 	func testName() {
@@ -61,7 +69,9 @@ class CardCollectionCellViewModelTests: XCTestCase {
 	func testBadImage() {
 		let card = Card(name: "name", imageURLString: "badImageURLString", type: "type", playerClass: nil)
 		
-		viewModel.configure(with: card) { [weak self] in
+		viewModel.configure(with: card)
+		
+		viewModel.getImage() { [weak self] in
 			guard let self = self else {
 				XCTFail()
 				return

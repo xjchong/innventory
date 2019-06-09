@@ -14,6 +14,7 @@ class CardCollectionCellViewModel {
 	let name = Observable<String?>(nil)
 	let type = Observable<String?>(nil)
 	let playerClass = Observable<String?>(nil)
+	let imageURLString = Observable<String?>(nil)
 	let image = Observable<UIImage?>(nil)
 }
 
@@ -21,25 +22,20 @@ class CardCollectionCellViewModel {
 // MARK: - Public
 
 extension CardCollectionCellViewModel {
-	func configure(with card: Card, completion: (() -> Void)? = nil) {
+	func configure(with card: Card) {
 		name.value = card.name
 		type.value = card.type
 		playerClass.value = card.playerClass
-		
-		getImage(from: card.imageURLString, completion: completion)
+		imageURLString.value = card.imageURLString
+		image.value = nil
 	}
-}
 
-
-// MARK: - Private
-
-private extension CardCollectionCellViewModel {
-	func getImage(from imageURLString: String?, completion: (() -> Void)?) {
+	func getImage(completion: (() -> Void)? = nil) {
 		#warning("Set a placeholder image")
 		image.value = nil
 		
 		guard
-			let imageURLString = imageURLString,
+			let imageURLString = imageURLString.value,
 			let imageURL = URL(string: imageURLString)
 			else {
 				completion?()

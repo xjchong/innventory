@@ -41,6 +41,8 @@ class CardCollectionViewCell: UICollectionViewCell, ReusableView, NibLoadableVie
 		static let cornerRadiusFactor: CGFloat = 10
 		static let shadowRadiusFactor: CGFloat = 5
 		static let shadowOpacity: Float = 0.2
+		
+		static let playerClassFallbackColor = UIColor.darkGray
 	}
 	
 	@IBOutlet weak var roundCardView: UIView!
@@ -117,6 +119,32 @@ extension CardCollectionViewCell {
 			}
 			.bind(to: playerClassLabel.reactive.text)
 			.dispose(in: disposeBag)
+		
+		viewModel.playerClass
+			.map { playerClass in
+				guard let playerClass = playerClass else {
+					return UIColor(named: "neutralGrey") ?? Constants.playerClassFallbackColor
+				}
+				
+				var backgroundColor: UIColor? {
+					switch playerClass {
+					case .druid: return UIColor(named: "druidBrown")
+					case .hunter: return UIColor(named: "hunterGreen")
+					case .mage: return UIColor(named: "mageBlue")
+					case .paladin: return UIColor(named: "paladinYellow")
+					case .priest: return UIColor(named: "priestWhite")
+					case .rogue: return UIColor(named: "rogueGrey")
+					case .shaman: return UIColor(named: "shamanBlue")
+					case .warlock: return UIColor(named: "warlockPurple")
+					case .warrior: return UIColor(named: "warriorRed")
+					default: return UIColor(named: "neutralGrey")
+					}
+				}
+				
+				return backgroundColor ?? UIColor.darkGray
+		}
+		.bind(to: playerClassLabel.reactive.backgroundColor)
+		.dispose(in: disposeBag)
 		
 		viewModel.getImage()
 	}

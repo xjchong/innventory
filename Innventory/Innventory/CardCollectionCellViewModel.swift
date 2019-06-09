@@ -13,6 +13,7 @@ import Bond
 class CardCollectionCellViewModel {
 	private enum Constants {
 		static let placeholderImage = UIImage(named: "card_image_placeholder")
+		static let placeholderBadImage = UIImage(named: "card_image_placeholder_404")
 	}
 	let name = Observable<String?>(nil)
 	let type = Observable<String?>(nil)
@@ -47,13 +48,17 @@ extension CardCollectionCellViewModel {
 		URLSession.shared.dataTask(with: imageURL) { [weak self] data, response, error in
 			defer { completion?() }
 			
-			guard let self = self, error == nil else { return }
-
+			guard let self = self else { return }
+			
 			guard
+				error == nil,
 				let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
 				let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
 				let data = data
-				else { return }
+				else {
+					self.image.value = Constants.placeholderBadImage
+					return
+			}
 			
 			self.image.value = UIImage(data: data)
 		}.resume()

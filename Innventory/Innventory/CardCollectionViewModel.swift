@@ -11,25 +11,41 @@ import Bond
 
 
 class CardCollectionViewModel {
-	enum Strings: String, Localizable {
-		case navigationTitle
-		case refreshErrorMessage
-
-		var tableName: String { return "CardCollectionViewModel" }
+	enum Error {
+		case refreshError
 	}
 	
 	let cellViewModels = MutableObservableArray<CardCollectionCellViewModel>()
+	let filteredCellViewModels = MutableObservableArray<CardCollectionCellViewModel>()
+	let searchTerm = Observable<String?>(nil)
 	let isLoading = Observable<Bool>(false)
-	let errorMessages = SafePublishSubject<String>()
+	let isSearching = Observable<Bool>(false)
+	let errors = SafePublishSubject<Error>()
 	
-	let title = Strings.navigationTitle.localized
+	private let disposeBag = DisposeBag()
+	
+	init() {
+		cellViewModels.observeNext { [weak self] _ in
+			guard let self = self else { return }
+			
+			self.filterCellViewModels(by: self.searchTerm.value)
+		}.dispose(in: disposeBag)
+	}
 }
 
 
 // MARK: - Public
 
 extension CardCollectionViewModel {
-	func refreshCollection() {
+	func numberOfItemsInSection(_ section: Int) -> Int {
+		return filteredCellViewModels.count
+	}
+	
+	func cellViewModel(for indexPath: IndexPath) -> CardCollectionCellViewModel {
+		return filteredCellViewModels[indexPath.item]
+	}
+	
+	@objc func refreshCollection() {
 		isLoading.next(true)
 		
 		CardService.getAllCards { [weak self] result in
@@ -46,12 +62,36 @@ extension CardCollectionViewModel {
 					
 					return cellViewModel
 				})
-				
-				#warning("Remove debug statement")
-				print("SUCCESS!")
 			case .failure:
-				self.errorMessages.next(Strings.refreshErrorMessage.localized)
+				self.errors.next(.refreshError)
 			}
+		}
+	}
+	
+	func toggleSearch() {
+		isSearching.value = !isSearching.value
+		searchTerm.value = nil
+		filterCellViewModels(by: nil)
+	}
+	
+	func performSearch() {
+		filterCellViewModels(by: searchTerm.value)
+	}
+}
+
+
+// MARK: - Private
+
+private extension CardCollectionViewModel {
+	func filterCellViewModels(by searchTerm: String?) {
+		if let searchTerm = searchTerm, !searchTerm.isBlank() {
+			filteredCellViewModels.replace(with: cellViewModels.array.filter {
+				guard let name = $0.name.value else { return false }
+				
+				return name.lowercased().contains(searchTerm.lowercased())
+			})
+		} else {
+			filteredCellViewModels.replace(with: cellViewModels.array)
 		}
 	}
 }

@@ -13,4 +13,12 @@ extension String {
 	func localized(tableName: String, bundle: Bundle = .main) -> String {
 		return NSLocalizedString(self, tableName: tableName, value: "**\(self)**", comment: "")
 	}
+	
+	func trimmed() -> String {
+		return trimmingCharacters(in: .whitespacesAndNewlines)
+	}
+	
+	func isBlank() -> Bool {
+		return trimmed().isEmpty
+	}
 }

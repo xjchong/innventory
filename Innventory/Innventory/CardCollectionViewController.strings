@@ -1,5 +1,5 @@
 /* 
-  CardCollectionViewModel.strings
+  CardCollectionViewController.strings
   Innventory
 
   Created by Xavier Chong on 2019-06-07.
@@ -7,4 +7,6 @@
 */
 
 "navigationTitle" = "Innventory";
+"searchBarButtonCancelTitle" = "Cancel";
+"searchBarPlaceholder" = "Search the inventory...";
 "refreshErrorMessage" = "Something went wrong! :(";

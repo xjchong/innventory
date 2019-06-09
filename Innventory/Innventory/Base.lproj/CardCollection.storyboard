@@ -14,10 +14,14 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="CardCollectionViewController" customModule="Innventory" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" userLabel="Background View">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Snj-Xa-Wq2">
+                                <rect key="frame" x="0.0" y="8" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dbi-aQ-W5u">
                                 <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -33,16 +37,29 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dbi-aQ-W5u" secondAttribute="trailing" id="2DD-ns-YBo"/>
+                            <constraint firstAttribute="trailing" secondItem="Snj-Xa-Wq2" secondAttribute="trailing" id="DtH-SV-l9h"/>
+                            <constraint firstItem="Snj-Xa-Wq2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="FAM-fy-wdQ"/>
+                            <constraint firstItem="dbi-aQ-W5u" firstAttribute="top" secondItem="Snj-Xa-Wq2" secondAttribute="bottom" id="K3i-Ry-Ga4"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="dbi-aQ-W5u" secondAttribute="bottom" id="KYD-yR-Q8a"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="Snj-Xa-Wq2" secondAttribute="top" constant="56" id="asY-VO-iuK"/>
                             <constraint firstItem="dbi-aQ-W5u" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="f57-WE-yih"/>
-                            <constraint firstItem="dbi-aQ-W5u" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="j1J-Ts-OZs"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="znJ-Y6-AGe"/>
+                    <navigationItem key="navigationItem" id="znJ-Y6-AGe">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="outline_search_black_24pt" id="co8-7u-E8N">
+                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="toggleSearch:" destination="BYZ-38-t0r" id="QLU-y6-0H6"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="dbi-aQ-W5u" id="ZS5-WV-rLV"/>
                         <outlet property="collectionViewLayout" destination="rm3-XN-EC2" id="P7y-Mh-fUK"/>
+                        <outlet property="searchBar" destination="Snj-Xa-Wq2" id="TbA-aV-EC2"/>
+                        <outlet property="searchBarButton" destination="co8-7u-E8N" id="558-0r-6Ne"/>
+                        <outlet property="searchBarTopConstraint" destination="asY-VO-iuK" id="eXp-nc-Fl4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -68,4 +85,7 @@
             <point key="canvasLocation" x="44.927536231884062" y="673.36956521739137"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="outline_search_black_24pt" width="24" height="24"/>
+    </resources>
 </document>

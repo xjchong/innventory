@@ -10,16 +10,32 @@ import ReactiveKit
 
 
 class CardCollectionViewController: UIViewController {
+	enum Strings: String, Localizable {
+		case navigationTitle
+		case searchBarButtonCancelTitle
+		case searchBarPlaceholder
+		case refreshErrorMessage
+		
+		var tableName: String { return "CardCollectionViewController" }
+	}
+	
 	private enum Constants {
 		static let collectionViewSectionInset = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
 		static let collectionViewMinimumInteritemSpacing: CGFloat = 12
 		static let cellWidthFactor: CGFloat = 2.2
 		static let cellHeightFactor: CGFloat = 1.2
+		
+		static let searchButtonImageName = "outline_search_black_24pt"
+		static let searchBarAnimationDuration = 0.2
 	}
 	
 	@IBOutlet weak var collectionView: UICollectionView!
 	@IBOutlet weak var collectionViewLayout: UICollectionViewFlowLayout!
 	
+	@IBOutlet weak var searchBarButton: UIBarButtonItem!
+	@IBOutlet weak var searchBar: UISearchBar!
+	@IBOutlet weak var searchBarTopConstraint: NSLayoutConstraint!
+
 	private let viewModel = CardCollectionViewModel()
 	private let disposeBag = DisposeBag()
 }
@@ -37,12 +53,54 @@ extension CardCollectionViewController {
 	}
 	
 	private func bindViewModel() {
-		viewModel.cellViewModels.observeNext { [weak self] _ in
+		viewModel.searchTerm.bidirectionalBind(to: searchBar.reactive.text)
+		
+		viewModel.isLoading.observeNext { [weak self] isLoading in
+			guard let self = self, let refreshControl = self.collectionView.refreshControl else { return }
+			
+			isLoading ? refreshControl.beginRefreshing() : refreshControl.endRefreshing()
+		}.dispose(in: disposeBag)
+
+		viewModel.filteredCellViewModels.observeNext { [weak self] _ in
 			self?.collectionView.reloadData()
 		}.dispose(in: disposeBag)
+
+		viewModel.isSearching
+			.map { $0 ? nil : UIImage(named: Constants.searchButtonImageName) }
+			.bind(to: searchBarButton.reactive.image)
 		
-		viewModel.errorMessages.observeNext { [weak self] errorMessage in
-			self?.present(UIAlertController.error(message: errorMessage), animated: true)
+		viewModel.isSearching
+			.map { $0 ? Strings.searchBarButtonCancelTitle.localized : nil }
+			.bind(to: searchBarButton.reactive.title)
+		
+		viewModel.isSearching.observeNext { [weak self] isSearching in
+			guard let self = self else { return }
+			
+			let animations = {
+				self.searchBarTopConstraint.constant = isSearching ? 0 : self.searchBar.bounds.height
+				self.view.layoutIfNeeded()
+			}
+			
+			let completion: (Bool) -> Void = { _ in
+				if isSearching {
+					self.searchBar.becomeFirstResponder()
+				} else {
+					self.view.endEditing(true)
+				}
+			}
+			
+			UIView.animate(withDuration: Constants.searchBarAnimationDuration,
+						   delay: 0,
+						   options: isSearching ? [.curveEaseOut] : [.curveEaseIn],
+						   animations: animations,
+						   completion: completion)
+		}.dispose(in: disposeBag)
+
+		viewModel.errors.observeNext { [weak self] error in
+			switch error {
+			case .refreshError:
+    			self?.present(UIAlertController.error(message: Strings.refreshErrorMessage.localized), animated: true)
+			}
 		}.dispose(in: disposeBag)
 	}
 }
@@ -52,12 +110,12 @@ extension CardCollectionViewController {
 
 extension CardCollectionViewController: UICollectionViewDataSource {
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return viewModel.cellViewModels.count
+		return viewModel.numberOfItemsInSection(section)
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		let cell: CardCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-		let cellViewModel = viewModel.cellViewModels[indexPath.item]
+		let cellViewModel = viewModel.cellViewModel(for: indexPath)
 		
 		cell.bind(to: cellViewModel)
 		cell.translatesAutoresizingMaskIntoConstraints = true
@@ -67,15 +125,23 @@ extension CardCollectionViewController: UICollectionViewDataSource {
 }
 
 
-// MARK: - UICollectionViewDelegate
+// MARK: - UISearchBarDelegate
 
-extension CardCollectionViewController: UICollectionViewDelegate {
-//	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//		let width = collectionView.contentSize.width/2
-//		let height = width
-//
-//		return CGSize(width: width, height: height)
-//	}
+extension CardCollectionViewController: UISearchBarDelegate {
+	func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+		searchBar.resignFirstResponder()
+		
+		viewModel.performSearch()
+	}
+}
+
+
+// MARK: - Actions
+
+private extension CardCollectionViewController {
+	@IBAction func toggleSearch(_ sender: AnyObject?) {
+		viewModel.toggleSearch()
+	}
 }
 
 
@@ -84,16 +150,24 @@ extension CardCollectionViewController: UICollectionViewDelegate {
 private extension CardCollectionViewController {
 	func setupUI() {
 		let screenWidth = UIScreen.main.bounds.width
+		let refreshControl = UIRefreshControl()
 		
-		title = viewModel.title
+		title = Strings.navigationTitle.localized
 		
 		collectionViewLayout.sectionInset = Constants.collectionViewSectionInset
 		collectionViewLayout.minimumInteritemSpacing = Constants.collectionViewMinimumInteritemSpacing
 		collectionViewLayout.itemSize = CGSize(width: screenWidth/Constants.cellWidthFactor,
 											   height: screenWidth/Constants.cellHeightFactor)
 		
+		refreshControl.addTarget(viewModel, action: #selector(viewModel.refreshCollection), for: .valueChanged)
+		collectionView.refreshControl = refreshControl
 		collectionView.dataSource = self
-		collectionView.delegate = self
 		collectionView.register(CardCollectionViewCell.self)
+		
+		searchBarTopConstraint.constant = 0
+		searchBar.placeholder = Strings.searchBarPlaceholder.localized
+		searchBar.delegate = self
+
+		view.layoutIfNeeded()
 	}
 }

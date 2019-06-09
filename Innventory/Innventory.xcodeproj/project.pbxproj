@@ -20,7 +20,7 @@
 		2AD3C58722AB18E200611CD5 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD3C58622AB18E200611CD5 /* Localizable.swift */; };
 		2AD3C58922AB192500611CD5 /* LocalizableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD3C58822AB192500611CD5 /* LocalizableExtension.swift */; };
 		2AD3C58B22AB198000611CD5 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD3C58A22AB198000611CD5 /* StringExtension.swift */; };
-		2AD3C58E22AB285200611CD5 /* CardCollectionViewModel.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2AD3C58D22AB285200611CD5 /* CardCollectionViewModel.strings */; };
+		2AD3C58E22AB285200611CD5 /* CardCollectionViewController.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2AD3C58D22AB285200611CD5 /* CardCollectionViewController.strings */; };
 		2AD3C59022AB2B0C00611CD5 /* UIAlertController.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2AD3C58F22AB2B0C00611CD5 /* UIAlertController.strings */; };
 		2AD3C59222AB4C1600611CD5 /* CardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AD3C59122AB4C1600611CD5 /* CardCollectionViewCell.xib */; };
 		2AD3C59422AB500C00611CD5 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD3C59322AB500C00611CD5 /* CardCollectionViewCell.swift */; };
@@ -63,7 +63,7 @@
 		2AD3C58622AB18E200611CD5 /* Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
 		2AD3C58822AB192500611CD5 /* LocalizableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableExtension.swift; sourceTree = "<group>"; };
 		2AD3C58A22AB198000611CD5 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
-		2AD3C58D22AB285200611CD5 /* CardCollectionViewModel.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = CardCollectionViewModel.strings; sourceTree = "<group>"; };
+		2AD3C58D22AB285200611CD5 /* CardCollectionViewController.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = CardCollectionViewController.strings; sourceTree = "<group>"; };
 		2AD3C58F22AB2B0C00611CD5 /* UIAlertController.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = UIAlertController.strings; sourceTree = "<group>"; };
 		2AD3C59122AB4C1600611CD5 /* CardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardCollectionViewCell.xib; sourceTree = "<group>"; };
 		2AD3C59322AB500C00611CD5 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -227,7 +227,7 @@
 		2AD3C58C22AB281E00611CD5 /* Strings */ = {
 			isa = PBXGroup;
 			children = (
-				2AD3C58D22AB285200611CD5 /* CardCollectionViewModel.strings */,
+				2AD3C58D22AB285200611CD5 /* CardCollectionViewController.strings */,
 				2AD3C58F22AB2B0C00611CD5 /* UIAlertController.strings */,
 			);
 			name = Strings;
@@ -348,7 +348,7 @@
 			files = (
 				2A923CDD22AA8E47004F37D2 /* LaunchScreen.storyboard in Resources */,
 				2AD3C59222AB4C1600611CD5 /* CardCollectionViewCell.xib in Resources */,
-				2AD3C58E22AB285200611CD5 /* CardCollectionViewModel.strings in Resources */,
+				2AD3C58E22AB285200611CD5 /* CardCollectionViewController.strings in Resources */,
 				2A923CDA22AA8E47004F37D2 /* Assets.xcassets in Resources */,
 				2A923CD822AA8E46004F37D2 /* CardCollection.storyboard in Resources */,
 				2AD3C59022AB2B0C00611CD5 /* UIAlertController.strings in Resources */,

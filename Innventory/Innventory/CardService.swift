@@ -42,7 +42,7 @@ class CardService {
 	
 					do {
 						let cardsBySet = try decoder.decode([String: [Card]].self, from: response.data!)
-						let cards = cardsBySet.flatMap { $0.value }
+						let cards = cardsBySet.flatMap { $0.value }.sorted(by: { a, b in a.name <= b.name })
 
 						completion(.success(cards))
 					} catch let error {

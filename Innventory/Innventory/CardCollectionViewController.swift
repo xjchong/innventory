@@ -11,12 +11,14 @@ import ReactiveKit
 
 class CardCollectionViewController: UIViewController {
 	private enum Constants {
+		static let collectionViewSectionInset = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
+		static let collectionViewMinimumInteritemSpacing: CGFloat = 12
 		static let cellWidthFactor: CGFloat = 2.2
-		static let cellHeightFactor: CGFloat = 1.5
+		static let cellHeightFactor: CGFloat = 1.2
 	}
+	
 	@IBOutlet weak var collectionView: UICollectionView!
 	@IBOutlet weak var collectionViewLayout: UICollectionViewFlowLayout!
-	
 	
 	private let viewModel = CardCollectionViewModel()
 	private let disposeBag = DisposeBag()
@@ -81,12 +83,14 @@ extension CardCollectionViewController: UICollectionViewDelegate {
 
 private extension CardCollectionViewController {
 	func setupUI() {
-		let collectionViewWidth = collectionView.bounds.width
+		let screenWidth = UIScreen.main.bounds.width
 		
 		title = viewModel.title
 		
-		collectionViewLayout.itemSize = CGSize(width: collectionViewWidth/Constants.cellWidthFactor,
-											   height: collectionViewWidth/Constants.cellHeightFactor)
+		collectionViewLayout.sectionInset = Constants.collectionViewSectionInset
+		collectionViewLayout.minimumInteritemSpacing = Constants.collectionViewMinimumInteritemSpacing
+		collectionViewLayout.itemSize = CGSize(width: screenWidth/Constants.cellWidthFactor,
+											   height: screenWidth/Constants.cellHeightFactor)
 		
 		collectionView.dataSource = self
 		collectionView.delegate = self

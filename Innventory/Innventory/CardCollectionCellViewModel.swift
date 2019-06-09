@@ -11,6 +11,9 @@ import Bond
 
 
 class CardCollectionCellViewModel {
+	private enum Constants {
+		static let placeholderImage = UIImage(named: "card_image_placeholder")
+	}
 	let name = Observable<String?>(nil)
 	let type = Observable<String?>(nil)
 	let playerClass = Observable<String?>(nil)
@@ -27,12 +30,11 @@ extension CardCollectionCellViewModel {
 		type.value = card.type
 		playerClass.value = card.playerClass
 		imageURLString.value = card.imageURLString
-		image.value = nil
+		image.value = Constants.placeholderImage
 	}
 
 	func getImage(completion: (() -> Void)? = nil) {
-		#warning("Set a placeholder image")
-		image.value = nil
+		image.value = Constants.placeholderImage
 		
 		guard
 			let imageURLString = imageURLString.value,
@@ -45,9 +47,8 @@ extension CardCollectionCellViewModel {
 		URLSession.shared.dataTask(with: imageURL) { [weak self] data, response, error in
 			defer { completion?() }
 			
-			guard let self = self else { return }
-			guard error == nil else { return }
-			
+			guard let self = self, error == nil else { return }
+
 			guard
 				let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
 				let mimeType = response?.mimeType, mimeType.hasPrefix("image"),

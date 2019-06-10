@@ -10,7 +10,6 @@ target 'Innventory' do
   pod 'Alamofire'
   pod 'ReactiveKit'
   pod 'Bond'
-  pod 'Kingfisher'
 
   target 'InnventoryTests' do
     inherit! :search_paths

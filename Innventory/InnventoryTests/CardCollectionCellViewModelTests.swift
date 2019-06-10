@@ -11,7 +11,6 @@ import XCTest
 
 
 class CardCollectionCellViewModelTests: XCTestCase {
-	
 	var viewModel = CardCollectionCellViewModel()
 
     override func setUp() {
@@ -38,12 +37,12 @@ class CardCollectionCellViewModelTests: XCTestCase {
 		viewModel.getImage() { [weak self] in
 			guard let self = self else { return }
 			
-			XCTAssertNil(self.viewModel.image.value)
+			XCTAssertEqual(self.viewModel.image.value, UIImage(named: "card_image_placeholder"))
 		}
 	}
 	
 	func testName() {
-		let card = Card(name: "name", imageURLString: nil, type: "type", playerClass: nil)
+		let card = Card(name: "name", imageURLString: nil, type: nil, playerClass: nil)
 		
 		viewModel.configure(with: card)
 		
@@ -51,7 +50,7 @@ class CardCollectionCellViewModelTests: XCTestCase {
 	}
 	
 	func testType() {
-		let card = Card(name: "name", imageURLString: nil, type: "type", playerClass: nil)
+		let card = Card(name: "name", imageURLString: nil, type: .enchantment, playerClass: nil)
 		
 		viewModel.configure(with: card)
 		
@@ -59,7 +58,7 @@ class CardCollectionCellViewModelTests: XCTestCase {
 	}
 	
 	func testPlayerClass() {
-		let card = Card(name: "name", imageURLString: nil, type: "type", playerClass: "playerClass")
+		let card = Card(name: "name", imageURLString: nil, type: nil, playerClass: .warrior)
 		
 		viewModel.configure(with: card)
 		
@@ -67,7 +66,7 @@ class CardCollectionCellViewModelTests: XCTestCase {
 	}
 	
 	func testBadImage() {
-		let card = Card(name: "name", imageURLString: "badImageURLString", type: "type", playerClass: nil)
+		let card = Card(name: "name", imageURLString: "badImageURLString", type: nil, playerClass: nil)
 		
 		viewModel.configure(with: card)
 		
@@ -77,7 +76,7 @@ class CardCollectionCellViewModelTests: XCTestCase {
 				return
 			}
 			
-			XCTAssertNil(self.viewModel.image.value)
+			XCTAssertEqual(self.viewModel.image.value, UIImage(named: "card_image_placeholder"))
 		}
 	}
 }

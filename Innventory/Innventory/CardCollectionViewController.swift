@@ -52,6 +52,15 @@ extension CardCollectionViewController {
 		viewModel.refreshCollection()
 	}
 	
+	override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+		super.viewWillTransition(to: size, with: coordinator)
+		
+		let isPhone = UIDevice.current.userInterfaceIdiom == .phone
+		let screenBounds = UIScreen.main.bounds
+		
+		updateCollectionViewLayout(nextWidth: isPhone ? screenBounds.height : screenBounds.width)
+	}
+	
 	private func bindViewModel() {
 		viewModel.searchTerm.bidirectionalBind(to: searchBar.reactive.text)
 		
@@ -152,20 +161,11 @@ private extension CardCollectionViewController {
 
 private extension CardCollectionViewController {
 	func setupUI() {
-		let screenWidth = UIScreen.main.bounds.width
-		let cellWidth = screenWidth/Constants.cellWidthFactor
-		let itemSpacing = floor((screenWidth - (cellWidth*2))/3)
-		let sectionInset = UIEdgeInsets(top: itemSpacing, left: itemSpacing, bottom: itemSpacing, right: itemSpacing)
-		
 		let refreshControl = UIRefreshControl()
 
 		title = Strings.navigationTitle.localized
 		
-		collectionViewLayout.sectionInset = sectionInset
-		collectionViewLayout.minimumInteritemSpacing = itemSpacing
-		collectionViewLayout.itemSize = CGSize(width: screenWidth/Constants.cellWidthFactor,
-											   height: screenWidth/Constants.cellHeightFactor)
-		
+		updateCollectionViewLayout(nextWidth: UIScreen.main.bounds.width)
 		refreshControl.addTarget(viewModel, action: #selector(viewModel.refreshCollection), for: .valueChanged)
 		collectionView.refreshControl = refreshControl
 		collectionView.dataSource = self
@@ -176,5 +176,18 @@ private extension CardCollectionViewController {
 		searchBar.delegate = self
 
 		view.layoutIfNeeded()
+	}
+	
+	func updateCollectionViewLayout(nextWidth: CGFloat) {
+		let cellWidth = nextWidth/Constants.cellWidthFactor
+		let itemSpacing = floor((nextWidth - (cellWidth*2))/3)
+		let sectionInset = UIEdgeInsets(top: itemSpacing, left: itemSpacing, bottom: itemSpacing, right: itemSpacing)
+		
+		collectionViewLayout.sectionInset = sectionInset
+		collectionViewLayout.minimumInteritemSpacing = itemSpacing
+		collectionViewLayout.itemSize = CGSize(width: nextWidth/Constants.cellWidthFactor,
+											   height: nextWidth/Constants.cellHeightFactor)
+		
+		collectionViewLayout.invalidateLayout()
 	}
 }

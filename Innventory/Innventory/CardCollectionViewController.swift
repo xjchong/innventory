@@ -52,6 +52,15 @@ extension CardCollectionViewController {
 		viewModel.refreshCollection()
 	}
 	
+	override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+		super.viewWillTransition(to: size, with: coordinator)
+		
+		let isPhone = UIDevice.current.userInterfaceIdiom == .phone
+		let screenBounds = UIScreen.main.bounds
+		
+		updateCollectionViewLayout(nextWidth: isPhone ? screenBounds.height : screenBounds.width)
+	}
+	
 	private func bindViewModel() {
 		viewModel.searchTerm.bidirectionalBind(to: searchBar.reactive.text)
 		
@@ -128,15 +137,6 @@ extension CardCollectionViewController: UICollectionViewDataSource {
 }
 
 
-// MARK: - UICollectionViewDelegateFlowLayout
-
-extension CardCollectionViewController: UICollectionViewDelegateFlowLayout {
-	override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
-		updateCollectionViewLayout(nextWidth: UIScreen.main.bounds.height)
-	}
-}
-
-
 // MARK: - UISearchBarDelegate
 
 extension CardCollectionViewController: UISearchBarDelegate {
@@ -168,7 +168,6 @@ private extension CardCollectionViewController {
 		updateCollectionViewLayout(nextWidth: UIScreen.main.bounds.width)
 		refreshControl.addTarget(viewModel, action: #selector(viewModel.refreshCollection), for: .valueChanged)
 		collectionView.refreshControl = refreshControl
-		collectionView.delegate = self
 		collectionView.dataSource = self
 		collectionView.register(CardCollectionViewCell.self)
 		
@@ -188,6 +187,7 @@ private extension CardCollectionViewController {
 		collectionViewLayout.minimumInteritemSpacing = itemSpacing
 		collectionViewLayout.itemSize = CGSize(width: nextWidth/Constants.cellWidthFactor,
 											   height: nextWidth/Constants.cellHeightFactor)
+		
 		collectionViewLayout.invalidateLayout()
 	}
 }
